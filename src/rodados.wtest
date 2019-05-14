@@ -1,0 +1,43 @@
+import rodados.*
+import dependencia.*
+
+describe "Flota de rodados" {
+	const cachito = new Corsa(color = "rojo")
+	
+	test "Dependencia cultura" {
+		const cultura = new Dependencia(empleados = 31)
+		cultura.agregarAFlota(cachito)
+		
+		// completar
+	}
+	
+	test "Dependencia deportes" {
+		const deportes = new Dependencia(empleados = 45)
+		deportes.agregarAFlota(cachito)
+		deportes.agregarAFlota(new Corsa(color = "azul"))
+		deportes.agregarAFlota(new Corsa(color = "verde"))
+		deportes.agregarAFlota(new Kwid(tieneTanqueAdicional = true))
+		deportes.agregarAFlota(
+			new AutoEspecial(capacidad = 5, velocidadMaxima = 160, 
+				peso = 1200, color = "beige")
+		)
+	
+		assert.equals(6450, deportes.pesoTotalFlota())	
+		assert.equals(true, deportes.estaBienEquipada())
+		assert.equals(7, deportes.capacidadTotalEnColor("azul"))
+		assert.equals("beige", deportes.colorDelRodadoMasRapido())
+		assert.equals(true, deportes.esGrande())
+		assert.equals(25, deportes.capacidadFaltante())	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
